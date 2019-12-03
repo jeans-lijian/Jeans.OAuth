@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeans.OAuth", "Jeans.OAuth\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth.AuthorizationServer", "OAuth.AuthorizationServer\OAuth.AuthorizationServer.csproj", "{EB97E576-A498-4154-9CD6-F41F0B582EBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeans.OAuth.Data", "Jeans.OAuth.Data\Jeans.OAuth.Data.csproj", "{B4E001EF-D137-432D-91BC-FACF76CCB3E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeans.OAuth.Core", "Jeans.OAuth.Core\Jeans.OAuth.Core.csproj", "{67DDD676-30C3-4575-A628-B95BA1DF177D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeans.OAuth.Server", "Jeans.OAuth.Server\Jeans.OAuth.Server.csproj", "{494DF16A-7E09-4F55-AE58-BCF769DE3197}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{EB97E576-A498-4154-9CD6-F41F0B582EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB97E576-A498-4154-9CD6-F41F0B582EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB97E576-A498-4154-9CD6-F41F0B582EBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4E001EF-D137-432D-91BC-FACF76CCB3E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4E001EF-D137-432D-91BC-FACF76CCB3E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4E001EF-D137-432D-91BC-FACF76CCB3E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4E001EF-D137-432D-91BC-FACF76CCB3E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67DDD676-30C3-4575-A628-B95BA1DF177D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67DDD676-30C3-4575-A628-B95BA1DF177D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67DDD676-30C3-4575-A628-B95BA1DF177D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67DDD676-30C3-4575-A628-B95BA1DF177D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{494DF16A-7E09-4F55-AE58-BCF769DE3197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{494DF16A-7E09-4F55-AE58-BCF769DE3197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{494DF16A-7E09-4F55-AE58-BCF769DE3197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{494DF16A-7E09-4F55-AE58-BCF769DE3197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
