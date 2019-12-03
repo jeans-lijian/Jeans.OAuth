@@ -81,3 +81,16 @@ E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\obj\Debug\Jeans.OAuth.cspro
 E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\obj\Debug\Jeans.OAuth.csproj.CopyComplete
 E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\obj\Debug\Jeans.OAuth.dll
 E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\obj\Debug\Jeans.OAuth.pdb
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\Microsoft.Owin.dll
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\Microsoft.Owin.Security.dll
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\Microsoft.Owin.Security.OAuth.dll
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\Owin.dll
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\System.Net.Http.Formatting.dll
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\System.Web.Http.dll
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\System.Web.Http.WebHost.dll
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\Microsoft.Owin.xml
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\Microsoft.Owin.Security.xml
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\Microsoft.Owin.Security.OAuth.xml
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\System.Net.Http.Formatting.xml
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\System.Web.Http.xml
+E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\System.Web.Http.WebHost.xml

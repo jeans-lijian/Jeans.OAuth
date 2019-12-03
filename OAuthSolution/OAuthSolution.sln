@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeans.OAuth", "Jeans.OAuth\Jeans.OAuth.csproj", "{A81D50B5-4290-4A92-A55D-F96C863E5EAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth.AuthorizationServer", "OAuth.AuthorizationServer\OAuth.AuthorizationServer.csproj", "{EB97E576-A498-4154-9CD6-F41F0B582EBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A81D50B5-4290-4A92-A55D-F96C863E5EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A81D50B5-4290-4A92-A55D-F96C863E5EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A81D50B5-4290-4A92-A55D-F96C863E5EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB97E576-A498-4154-9CD6-F41F0B582EBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB97E576-A498-4154-9CD6-F41F0B582EBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB97E576-A498-4154-9CD6-F41F0B582EBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB97E576-A498-4154-9CD6-F41F0B582EBA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
