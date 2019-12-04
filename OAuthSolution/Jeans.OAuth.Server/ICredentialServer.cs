@@ -8,5 +8,6 @@ namespace Jeans.OAuth.Server
 {
     public interface ICredentialServer
     {
+        bool ValidateClientIdAndClientSecret(string clientId, string clientSecret);
     }
 }

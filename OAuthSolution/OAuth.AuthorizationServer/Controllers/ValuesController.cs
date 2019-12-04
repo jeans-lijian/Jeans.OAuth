@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jeans.OAuth.Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,7 +9,7 @@ using System.Web.Http;
 namespace OAuth.AuthorizationServer.Controllers
 {
     public class ValuesController : ApiController
-    {
+    { 
         // GET api/values
         public IEnumerable<string> Get()
         {

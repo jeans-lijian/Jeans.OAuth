@@ -15,6 +15,7 @@ namespace OAuth.AuthorizationServer
             // 有关如何配置应用程序的详细信息，请访问 https://go.microsoft.com/fwlink/?LinkID=316888
             var config = new HttpConfiguration();
             WebApiConfig.Register(config);
+            AutoFacConfigure.Configure(app, config);
             OAuthConfigure.Configure(app);
 
             app.UseWebApi(config);

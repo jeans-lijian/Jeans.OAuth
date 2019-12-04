@@ -1,4 +1,5 @@
-﻿using Jeans.OAuth.Data.Mapping;
+﻿using Jeans.OAuth.Core.Domains;
+using Jeans.OAuth.Data.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -21,5 +22,7 @@ namespace Jeans.OAuth.Data
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public DbSet<Credentials> Credentials { get; set; }
     }
 }

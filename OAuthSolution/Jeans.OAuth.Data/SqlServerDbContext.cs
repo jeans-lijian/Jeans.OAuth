@@ -22,5 +22,7 @@ namespace Jeans.OAuth.Data
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public DbSet<Credentials> Credentials { get; set; }
     }
 }

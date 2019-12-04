@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=4.3.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.4.3.1\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -144,6 +150,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoFacConfigure.cs" />
     <Compile Include="App_Start\OAuthConfigure.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -237,6 +244,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jeans.OAuth.Server\Jeans.OAuth.Server.csproj">
+      <Project>{494df16a-7e09-4f55-ae58-bcf769de3197}</Project>
+      <Name>Jeans.OAuth.Server</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

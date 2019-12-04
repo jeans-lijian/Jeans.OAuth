@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using Jeans.OAuth.Server;
+using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using OAuth.AuthorizationServer.Providers;
@@ -20,9 +21,12 @@ namespace OAuth.AuthorizationServer
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
                 TokenEndpointPath = new PathString("/token"),
                 AuthorizeEndpointPath = new PathString("/authorize"),
-                Provider = new CustomOAuthAuthorizationServerProvider(),
+                Provider = new CustomOAuthAuthorizationServerProvider()
+                {
+                    CredentialServer = new CredentialServer()
+                },
                 AuthorizationCodeProvider = null,
-                RefreshTokenProvider=null
+                RefreshTokenProvider = null
             };
 
             app.UseOAuthAuthorizationServer(oauthOptions);
