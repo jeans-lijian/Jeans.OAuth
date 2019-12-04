@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeans.OAuth.Core", "Jeans.O
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeans.OAuth.Server", "Jeans.OAuth.Server\Jeans.OAuth.Server.csproj", "{494DF16A-7E09-4F55-AE58-BCF769DE3197}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OAuthServer", "OAuthServer", "{16EA7EE0-2459-42F6-9E9D-C1642AA889DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EB97E576-A498-4154-9CD6-F41F0B582EBA} = {16EA7EE0-2459-42F6-9E9D-C1642AA889DF}
+		{B4E001EF-D137-432D-91BC-FACF76CCB3E5} = {16EA7EE0-2459-42F6-9E9D-C1642AA889DF}
+		{67DDD676-30C3-4575-A628-B95BA1DF177D} = {16EA7EE0-2459-42F6-9E9D-C1642AA889DF}
+		{494DF16A-7E09-4F55-AE58-BCF769DE3197} = {16EA7EE0-2459-42F6-9E9D-C1642AA889DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {62DFA181-6173-45F3-AF92-9A10D748778E}
