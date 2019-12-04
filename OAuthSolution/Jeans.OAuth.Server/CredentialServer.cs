@@ -8,7 +8,7 @@ namespace Jeans.OAuth.Server
 {
     public class CredentialServer : ICredentialServer
     {
-        public bool ValidateClientIdAndClientSecret(string clientId, string clientSecret)
+        public bool HasClientIdAndClientSecret(string clientId, string clientSecret)
         {
             if (string.IsNullOrWhiteSpace(clientId) || string.IsNullOrWhiteSpace(clientSecret))
             {

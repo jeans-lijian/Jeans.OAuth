@@ -20,12 +20,15 @@ namespace OAuth.AuthorizationServer
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             Registers(builder);
             var container = builder.Build();
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            //config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
 
         private static void Registers(ContainerBuilder builder)
         {
-            //builder.RegisterType<CredentialServer>().As<ICredentialServer>();
+            builder.RegisterType<CustomOAuthAuthorizationServerProvider>().AsSelf().SingleInstance();
+            builder.RegisterType<CredentialServer>().As<ICredentialServer>();
+            builder.RegisterType<UserServer>().As<IUserServer>();
         }
     }
 }

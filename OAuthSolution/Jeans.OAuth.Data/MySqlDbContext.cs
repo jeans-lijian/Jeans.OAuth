@@ -19,10 +19,12 @@ namespace Jeans.OAuth.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new CredentialMap());
+            modelBuilder.Configurations.Add(new UserMap());
 
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Credentials> Credentials { get; set; }
+        public DbSet<UserEntity> UserEntities { get; set; }
     }
 }

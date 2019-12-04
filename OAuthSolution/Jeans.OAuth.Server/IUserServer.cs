@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Jeans.OAuth.Server
 {
-    public interface ICredentialServer
+    public interface IUserServer
     {
-        bool HasClientIdAndClientSecret(string clientId, string clientSecret);
+        bool HasLogin(string userName,string password);
     }
 }
