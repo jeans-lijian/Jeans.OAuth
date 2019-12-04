@@ -91,7 +91,6 @@ E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\zh-Hans\System.Web.Razo
 E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\zh-Hans\System.Web.WebPages.resources.dll
 E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\obj\Debug\Jeans.OAuth.csprojAssemblyReference.cache
 E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\obj\Debug\Jeans.OAuth.csproj.CoreCompileInputs.cache
 E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\obj\Debug\Jeans.OAuth.csproj.CopyComplete
 E:\My_Source_Code\My_OAuth\OAuthSolution\Jeans.OAuth\obj\Debug\Jeans.OAuth.dll

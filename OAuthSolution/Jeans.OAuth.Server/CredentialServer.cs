@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Jeans.OAuth.Data
+namespace Jeans.OAuth.Server
 {
-    public class Class1
+    public class CredentialServer: ICredentialServer
     {
     }
 }
