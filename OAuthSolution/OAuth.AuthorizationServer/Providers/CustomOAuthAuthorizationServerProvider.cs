@@ -94,7 +94,18 @@ namespace OAuth.AuthorizationServer.Providers
         /// <returns></returns>
         public override Task GrantClientCredentials(OAuthGrantClientCredentialsContext context)
         {
-            return base.GrantClientCredentials(context);
+            if (context.Scope.Count <= 0 || (context.Scope.Count == 1 && string.IsNullOrWhiteSpace(context.Scope[0])))
+            {
+                context.SetError("invalid_scope", "scope 不能为空");
+                return Task.FromResult<object>(null);
+            }
+
+            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+            identity.AddClaim(new Claim(ClaimTypes.Role, string.Join(" ", context.Scope)));
+
+            context.Validated(identity);
+
+            return Task.FromResult<object>(null);
         }
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)

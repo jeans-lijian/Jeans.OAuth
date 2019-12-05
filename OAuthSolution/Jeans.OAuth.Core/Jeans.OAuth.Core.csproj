@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Domains\Credentials.cs" />
+    <Compile Include="Domains\GrantTypeMode.cs" />
     <Compile Include="Domains\UserEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

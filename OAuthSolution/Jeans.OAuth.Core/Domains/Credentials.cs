@@ -8,5 +8,7 @@
         public string ClientId { get; set; }
 
         public string ClientSecret { get; set; }
+
+        public GrantTypeMode GrantTypeMode { get; set; }
     }
 }
