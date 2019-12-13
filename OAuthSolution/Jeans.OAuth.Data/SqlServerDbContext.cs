@@ -1,4 +1,5 @@
-﻿using Jeans.OAuth.Core.Domains;
+﻿using Jeans.OAuth.Core;
+using Jeans.OAuth.Core.Domains;
 using Jeans.OAuth.Data.Mapping;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Jeans.OAuth.Data
 {
-    public class SqlServerDbContext : DbContext, IDbContext
+    public class SqlServerDbContext : DbContext //IDbContext
     {
         public SqlServerDbContext() : base("")
         {
@@ -22,6 +23,11 @@ namespace Jeans.OAuth.Data
             modelBuilder.Configurations.Add(new UserMap());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public virtual new DbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
+        {
+            return base.Set<TEntity>();
         }
 
         public DbSet<Credentials> Credentials { get; set; }

@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
+using Jeans.OAuth.Data;
 using Jeans.OAuth.Server;
 using OAuth.AuthorizationServer.Providers;
 using Owin;
@@ -26,6 +27,9 @@ namespace OAuth.AuthorizationServer
 
         private static void Registers(ContainerBuilder builder)
         {
+            builder.RegisterType<MySqlDbContext>().As<IDbContext>().SingleInstance();
+            builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).SingleInstance();
+
             builder.RegisterType<CustomOAuthAuthorizationServerProvider>().AsSelf().SingleInstance();
             builder.RegisterType<CredentialServer>().As<ICredentialServer>();
             builder.RegisterType<UserServer>().As<IUserServer>();

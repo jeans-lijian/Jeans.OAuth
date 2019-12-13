@@ -1,5 +1,7 @@
-﻿using Jeans.OAuth.Core.Domains;
+﻿using Jeans.OAuth.Core;
+using Jeans.OAuth.Core.Domains;
 using Jeans.OAuth.Data.Mapping;
+using MySql.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Jeans.OAuth.Data
 {
+    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class MySqlDbContext : DbContext, IDbContext
     {
-        public MySqlDbContext() : base("")
+        public MySqlDbContext() : base("name=MySqlDbContext")
         {
-
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -22,6 +24,11 @@ namespace Jeans.OAuth.Data
             modelBuilder.Configurations.Add(new UserMap());
 
             base.OnModelCreating(modelBuilder);
+        }
+
+        public virtual new DbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
+        {
+            return base.Set<TEntity>();
         }
 
         public DbSet<Credentials> Credentials { get; set; }

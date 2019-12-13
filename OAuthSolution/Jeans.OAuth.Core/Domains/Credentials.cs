@@ -9,6 +9,6 @@
 
         public string ClientSecret { get; set; }
 
-        public GrantTypeMode GrantTypeMode { get; set; }
+        public string GrantTypeMode { get; set; }
     }
 }

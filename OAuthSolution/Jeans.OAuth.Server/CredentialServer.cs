@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Jeans.OAuth.Core.Domains;
+using Jeans.OAuth.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +10,13 @@ namespace Jeans.OAuth.Server
 {
     public class CredentialServer : ICredentialServer
     {
+        private readonly IRepository<Credentials> _credentialRepository;
+        public CredentialServer(IRepository<Credentials> credentialRepository)
+        {
+            _credentialRepository = credentialRepository;
+        }
+
+
         public bool HasClientIdAndClientSecret(string clientId, string clientSecret)
         {
             if (string.IsNullOrWhiteSpace(clientId) || string.IsNullOrWhiteSpace(clientSecret))
@@ -15,7 +24,7 @@ namespace Jeans.OAuth.Server
                 return false;
             }
 
-            return clientId == "jeans" && clientSecret == "123456";
+            return _credentialRepository.Table.Any(a => a.ClientId == clientId && a.ClientSecret == clientSecret);
         }
     }
 }

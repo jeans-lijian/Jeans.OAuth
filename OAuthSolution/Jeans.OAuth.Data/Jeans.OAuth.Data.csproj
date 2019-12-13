@@ -64,7 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EfRepository.cs" />
     <Compile Include="IDbContext.cs" />
+    <Compile Include="IRepository.cs" />
     <Compile Include="Mapping\CredentialMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="MySqlDbContext.cs" />
