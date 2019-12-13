@@ -265,6 +265,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Jeans.OAuth.Core\Jeans.OAuth.Core.csproj">
+      <Project>{67ddd676-30c3-4575-a628-b95ba1df177d}</Project>
+      <Name>Jeans.OAuth.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Jeans.OAuth.Data\Jeans.OAuth.Data.csproj">
       <Project>{b4e001ef-d137-432d-91bc-facf76ccb3e5}</Project>
       <Name>Jeans.OAuth.Data</Name>

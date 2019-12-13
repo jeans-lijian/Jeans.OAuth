@@ -1,4 +1,5 @@
-﻿using Jeans.OAuth.Server;
+﻿using Jeans.OAuth.Core.Domains;
+using Jeans.OAuth.Server;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System;
@@ -60,10 +61,10 @@ namespace OAuth.AuthorizationServer.Providers
                 return Task.FromResult<object>(null);
             }
 
-            bool result = _userServer.HasLogin(context.UserName, context.Password);
-            if (!result)
+            UserEntity user = _userServer.GetUser(context.UserName, context.Password);
+            if (user == null)
             {
-                context.SetError("invalid_grant", "用户名或密码不正确.");
+                context.SetError("error_description", "用户名或密码不正确.");
                 return Task.FromResult<object>(null);
             }
 
@@ -71,18 +72,18 @@ namespace OAuth.AuthorizationServer.Providers
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
             identity.AddClaim(new Claim(ClaimTypes.Role, "Iphone_Read Iphone_Write"));
 
-            //string role = "Iphone_Read Iphone_Write";
-            //var props = new AuthenticationProperties(new Dictionary<string, string>
-            //{
-            //    {
-            //        "scope",role
-            //    }
-            //});
+            string role = "Iphone_Read Iphone_Write";
+            var props = new AuthenticationProperties(new Dictionary<string, string>
+            {
+                {
+                    "oauth:scope",role
+                }
+            });
 
-            //var ticket = new AuthenticationTicket(identity, props);
-            //context.Validated(ticket);
+            var ticket = new AuthenticationTicket(identity, props);
+            context.Validated(ticket);
 
-            context.Validated(identity);
+            //context.Validated(identity);
 
             return Task.FromResult<object>(null);
         }
@@ -94,12 +95,6 @@ namespace OAuth.AuthorizationServer.Providers
         /// <returns></returns>
         public override Task GrantClientCredentials(OAuthGrantClientCredentialsContext context)
         {
-            if (context.Scope.Count <= 0 || (context.Scope.Count == 1 && string.IsNullOrWhiteSpace(context.Scope[0])))
-            {
-                context.SetError("invalid_scope", "scope 不能为空");
-                return Task.FromResult<object>(null);
-            }
-
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim(ClaimTypes.Role, string.Join(" ", context.Scope)));
 

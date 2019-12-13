@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jeans.OAuth.Core.Domains;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Jeans.OAuth.Server
 {
     public interface IUserServer
     {
-        bool HasLogin(string userName,string password);
+        UserEntity GetUser(string userName, string password);
     }
 }
