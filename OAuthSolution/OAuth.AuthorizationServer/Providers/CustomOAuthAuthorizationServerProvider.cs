@@ -158,11 +158,6 @@ namespace OAuth.AuthorizationServer.Providers
             return Task.FromResult<object>(null);
         }
 
-        public override Task ValidateTokenRequest(OAuthValidateTokenRequestContext context)
-        {
-            return base.ValidateTokenRequest(context);
-        }
-
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
             foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)
