@@ -9,6 +9,7 @@ Create Table Credentials
 (
 	Id varchar(36) primary key not null comment '主键',
     ClientId varchar(64) not null comment '客户端id',
-    ClientSecret varchar(64) not null comment '客户密钥',
-    GrantTypeMode varchar(64) not null comment '授予类型'
+    ClientSecret varchar(64) comment '客户密钥',
+    GrantTypeMode varchar(64) not null comment '授予类型',
+	RedirectUri varchar(256) comment '跳转地址'
 );

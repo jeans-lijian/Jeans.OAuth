@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Jeans.OAuth.Core.Domains;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,7 @@ namespace Jeans.OAuth.Server
     public interface ICredentialServer
     {
         bool HasClientIdAndClientSecret(string clientId, string clientSecret);
+
+        Credentials GetCredentialByClientId(string clientId);
     }
 }

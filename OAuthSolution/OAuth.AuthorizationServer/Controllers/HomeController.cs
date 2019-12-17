@@ -14,5 +14,10 @@ namespace OAuth.AuthorizationServer.Controllers
 
             return View();
         }
+
+        public ActionResult Authorize()
+        {
+            return View();
+        }
     }
 }

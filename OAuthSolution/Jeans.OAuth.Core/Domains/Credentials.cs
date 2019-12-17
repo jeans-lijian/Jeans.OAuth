@@ -10,5 +10,7 @@
         public string ClientSecret { get; set; }
 
         public string GrantTypeMode { get; set; }
+
+        public string RedirectUri { get; set; }
     }
 }

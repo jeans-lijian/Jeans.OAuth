@@ -212,7 +212,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\client.sql" />
     <Content Include="App_Data\InitData.sql" />
+    <Content Include="App_Data\t_user.sql" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

@@ -103,6 +103,66 @@ namespace OAuth.AuthorizationServer.Providers
             return Task.FromResult<object>(null);
         }
 
+        /// <summary>
+        /// 简单授予
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public override Task ValidateClientRedirectUri(OAuthValidateClientRedirectUriContext context)
+        {
+            if (string.IsNullOrWhiteSpace(context.ClientId))
+            {
+                context.SetError("invalid_request", "客户ClientId不能为空");
+                return Task.FromResult<object>(null);
+            }
+
+            var result = _credentialServer.GetCredentialByClientId(context.ClientId);
+            if (result == null)
+            {
+                context.SetError("invalid_request", "客户ClientId无效");
+                return Task.FromResult<object>(null);
+            }
+
+            context.Validated(result.RedirectUri);
+            return Task.FromResult<object>(null);
+        }
+
+        public override Task ValidateAuthorizeRequest(OAuthValidateAuthorizeRequestContext context)
+        {
+            var result = _credentialServer.GetCredentialByClientId(context.AuthorizeRequest.ClientId);
+            if (result != null && (context.AuthorizeRequest.IsImplicitGrantType || context.AuthorizeRequest.IsAuthorizationCodeGrantType))
+            {
+                context.Validated();
+            }
+            else
+            {
+                context.Rejected();
+            }
+
+            return Task.FromResult<object>(null);
+        }
+
+        public override Task AuthorizeEndpoint(OAuthAuthorizeEndpointContext context)
+        {
+            if (context.AuthorizeRequest.IsImplicitGrantType)
+            {
+                var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+                context.OwinContext.Authentication.SignIn(identity);
+                context.RequestCompleted();
+            }
+            else if (context.AuthorizeRequest.IsAuthorizationCodeGrantType)
+            {
+
+            }
+
+            return Task.FromResult<object>(null);
+        }
+
+        public override Task ValidateTokenRequest(OAuthValidateTokenRequestContext context)
+        {
+            return base.ValidateTokenRequest(context);
+        }
+
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {
             foreach (KeyValuePair<string, string> property in context.Properties.Dictionary)

@@ -16,6 +16,15 @@ namespace Jeans.OAuth.Server
             _credentialRepository = credentialRepository;
         }
 
+        public Credentials GetCredentialByClientId(string clientId)
+        {
+            if (string.IsNullOrWhiteSpace(clientId))
+            {
+                return null;
+            }
+
+            return _credentialRepository.Table.FirstOrDefault(a => a.ClientId == clientId);
+        }
 
         public bool HasClientIdAndClientSecret(string clientId, string clientSecret)
         {
