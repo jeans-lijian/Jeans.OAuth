@@ -16,6 +16,11 @@ namespace Jeans.OAuth.Server
             _userRepository = userRepository;
         }
 
+        public List<UserEntity> GetUsers()
+        {
+            return _userRepository.Table.OrderBy(by => by.UserName).ToList();
+        }
+
         public UserEntity GetUser(string userName, string password)
         {
             if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password))

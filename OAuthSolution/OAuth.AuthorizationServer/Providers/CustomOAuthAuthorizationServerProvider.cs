@@ -129,8 +129,7 @@ namespace OAuth.AuthorizationServer.Providers
 
         public override Task ValidateAuthorizeRequest(OAuthValidateAuthorizeRequestContext context)
         {
-            var result = _credentialServer.GetCredentialByClientId(context.AuthorizeRequest.ClientId);
-            if (result != null && (context.AuthorizeRequest.IsImplicitGrantType || context.AuthorizeRequest.IsAuthorizationCodeGrantType))
+            if (context.AuthorizeRequest.IsImplicitGrantType || context.AuthorizeRequest.IsAuthorizationCodeGrantType)
             {
                 context.Validated();
             }
@@ -139,7 +138,7 @@ namespace OAuth.AuthorizationServer.Providers
                 context.Rejected();
             }
 
-            return Task.FromResult<object>(null);
+            return Task.FromResult(0);
         }
 
         public override Task AuthorizeEndpoint(OAuthAuthorizeEndpointContext context)

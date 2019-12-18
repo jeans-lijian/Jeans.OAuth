@@ -16,6 +16,11 @@ namespace Jeans.OAuth.Server
             _credentialRepository = credentialRepository;
         }
 
+        public List<Credentials> GetCredentials()
+        {
+            return _credentialRepository.Table.OrderBy(by => by.GrantTypeMode).ToList();
+        }
+
         public Credentials GetCredentialByClientId(string clientId)
         {
             if (string.IsNullOrWhiteSpace(clientId))

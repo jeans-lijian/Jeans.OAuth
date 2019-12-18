@@ -9,6 +9,8 @@ namespace Jeans.OAuth.Server
 {
     public interface ICredentialServer
     {
+        List<Credentials> GetCredentials();
+
         bool HasClientIdAndClientSecret(string clientId, string clientSecret);
 
         Credentials GetCredentialByClientId(string clientId);

@@ -1,0 +1,38 @@
+﻿@using Jeans.OAuth.Core.Domains;
+@model List<Credentials>
+@{
+    ViewBag.Title = "授权配置列表";
+}
+
+<a class="btn btn-primary" href="@Url.Action("GrantAdd","OAuthGrant")" role="button">新增</a>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Id</th>
+                <th>GrantTypeMode</th>
+                <th>ClientId</th>
+                <th>ClientSecret</th>
+                <th>RedirectUri</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">
+                        <a class="btn btn-info btn-xs" href="@Url.Action("GrantEdit","OAuthGrant",new { Id=item.Id})" role="button">编辑</a>
+                        <a class="btn btn-danger btn-xs" href="@Url.Action("GrantDelete","OAuthGrant",new { Id=item.Id})" role="button">删除</a>
+                    </th>
+                    <td>@item.Id</td>
+                    <td>@item.GrantTypeMode</td>
+                    <td>@item.ClientId</td>
+                    <td>@item.ClientSecret</td>
+                    <td>@item.RedirectUri</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

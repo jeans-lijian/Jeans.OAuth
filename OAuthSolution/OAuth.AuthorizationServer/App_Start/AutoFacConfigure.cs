@@ -1,15 +1,13 @@
 ﻿using Autofac;
+using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using Jeans.OAuth.Data;
 using Jeans.OAuth.Server;
 using OAuth.AuthorizationServer.Providers;
 using Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace OAuth.AuthorizationServer
 {
@@ -18,9 +16,11 @@ namespace OAuth.AuthorizationServer
         public static void Configure(IAppBuilder app, HttpConfiguration config)
         {
             var builder = new ContainerBuilder();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly());
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             Registers(builder);
             var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             //config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
