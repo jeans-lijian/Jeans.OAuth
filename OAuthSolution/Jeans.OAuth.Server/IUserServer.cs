@@ -10,7 +10,9 @@ namespace Jeans.OAuth.Server
 
         UserEntity GetUser(string userName, string password);
 
-        bool DeleteUser(Guid id);
+        UserEntity GetUserById(Guid id);
+
+        void DeleteUser(UserEntity entity);
 
         void AddUser(UserEntity entity);
 

@@ -3,8 +3,6 @@ using Jeans.OAuth.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Jeans.OAuth.Server
 {
@@ -38,16 +36,15 @@ namespace Jeans.OAuth.Server
             }
         }
 
-        public bool DeleteUser(Guid id)
-        {
-            UserEntity entity = _userRepository.GetById(id);
-            if (entity != null)
-            {
-                _userRepository.Delete(entity);
-                return true;
-            }
 
-            return false;
+        public UserEntity GetUserById(Guid id)
+        {
+            return _userRepository.GetById(id);
+        }
+
+        public void DeleteUser(UserEntity entity)
+        {
+            _userRepository.Delete(entity);
         }
 
         public void AddUser(UserEntity entity)

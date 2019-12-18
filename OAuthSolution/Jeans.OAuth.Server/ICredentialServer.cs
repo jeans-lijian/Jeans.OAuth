@@ -1,9 +1,6 @@
 ﻿using Jeans.OAuth.Core.Domains;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Jeans.OAuth.Server
 {
@@ -14,5 +11,13 @@ namespace Jeans.OAuth.Server
         bool HasClientIdAndClientSecret(string clientId, string clientSecret);
 
         Credentials GetCredentialByClientId(string clientId);
+
+        Credentials GetCredentialsById(Guid id);
+
+        void DeleteCredentials(Credentials entity);
+
+        void AddCredentials(Credentials entity);
+
+        void UpdateCredentials(Credentials entity);
     }
 }

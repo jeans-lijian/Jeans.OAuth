@@ -1,36 +1,30 @@
 ﻿@using Jeans.OAuth.Core.Domains;
+@model UserEntity
 @{
-    ViewBag.Title = "UserEdit";
+    ViewBag.Title = "用户编辑";
 }
 
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
         <div class="panel panel-default">
-            <div class="panel-heading">授权配置新增</div>
+            <div class="panel-heading">用户编辑</div>
             <div class="panel-body">
 
-                <form>
+                @using (Html.BeginForm("UserEdit", "OAuthGrant", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m=>m.Id)
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                        <label for="UserName">用户名</label>
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <label for="Password">密   码</label>
+                        @Html.TextBoxFor(m => m.Password, new { @class = "form-control" })
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" id="exampleInputFile">
-                        <p class="help-block">Example block-level help text here.</p>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Check me out
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
+                    <button type="submit" class="btn btn-default">提交</button>
+                }
 
             </div>
         </div>

@@ -3,8 +3,6 @@ using Jeans.OAuth.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Jeans.OAuth.Server
 {
@@ -40,5 +38,26 @@ namespace Jeans.OAuth.Server
 
             return _credentialRepository.Table.Any(a => a.ClientId == clientId && a.ClientSecret == clientSecret);
         }
+
+        public Credentials GetCredentialsById(Guid id)
+        {
+            return _credentialRepository.GetById(id);
+        }
+
+        public void DeleteCredentials(Credentials entity)
+        {
+            _credentialRepository.Delete(entity);
+        }
+
+        public void AddCredentials(Credentials entity)
+        {
+            _credentialRepository.Insert(entity);
+        }
+
+        public void UpdateCredentials(Credentials entity)
+        {
+            _credentialRepository.Update(entity);
+        }
+
     }
 }

@@ -37,13 +37,64 @@ namespace OAuth.AuthorizationServer.Controllers
             return View();
         }
 
-        public ActionResult GrantEdit()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GrantAdd(Credentials model)
         {
-            return View();
+            if (model==null)
+            {
+                return RedirectToAction("GrantList");
+            }
+
+            model.Id = Guid.NewGuid();
+            _credentialService.AddCredentials(model);
+
+            return RedirectToAction("GrantList");
         }
 
-        public ActionResult GrantDelete()
+        public ActionResult GrantEdit(Guid id)
         {
+            Credentials entity = _credentialService.GetCredentialsById(id);
+            if (entity==null)
+            {
+                return View("Error");
+            }
+
+            return View(entity);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GrantEdit(Credentials model)
+        {
+            if (model==null)
+            {
+                return RedirectToAction("GrantList");
+            }
+
+            Credentials entity= _credentialService.GetCredentialsById(model.Id);
+            if (entity!=null)
+            {
+                entity.ClientId = model.ClientId;
+                entity.ClientSecret = model.ClientSecret;
+                entity.RedirectUri = model.RedirectUri;
+
+                _credentialService.UpdateCredentials(entity);
+            }
+
+            return RedirectToAction("GrantList");
+        }
+
+        public ActionResult GrantDelete(Guid id)
+        {
+            Credentials entity = _credentialService.GetCredentialsById(id);
+            if (entity == null)
+            {
+                return View("Error");
+            }
+
+            _credentialService.DeleteCredentials(entity);
+
             return View("GrantList");
         }
 
@@ -63,14 +114,63 @@ namespace OAuth.AuthorizationServer.Controllers
             return View();
         }
 
-        public ActionResult UserEdit()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserAdd(UserEntity model)
         {
-            return View();
+            if (model == null)
+            {
+                return RedirectToAction("UserList");
+            }
+
+            model.Id = Guid.NewGuid();
+            _userService.AddUser(model);
+
+            return RedirectToAction("UserList");
+        }
+
+        public ActionResult UserEdit(Guid id)
+        {
+            UserEntity entity = _userService.GetUserById(id);
+            if (entity == null)
+            {
+                return View("Error");
+            }
+
+            return View(entity);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserEdit(UserEntity model)
+        {
+            if (model == null)
+            {
+                return RedirectToAction("UserList");
+            }
+
+            UserEntity entity = _userService.GetUserById(model.Id);
+            if (entity != null)
+            {
+                entity.UserName = model.UserName;
+                entity.Password = model.Password;
+
+                _userService.UpdateUser(entity);
+            }
+            
+            return RedirectToAction("UserList");
         }
 
         public ActionResult UserDelete(Guid id)
         {
-            _userService.DeleteUser(id);
+            UserEntity entity = _userService.GetUserById(id);
+            if (entity == null)
+            {
+                return View("Error");
+            }
+
+            _userService.DeleteUser(entity);
+
             return RedirectToAction("UserList");
         }
 
