@@ -277,6 +277,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\OAuthGrant\GrantList.cshtml" />
     <Content Include="Views\OAuthGrant\UserList.cshtml" />
+    <Content Include="Views\OAuthGrant\GrantAdd.cshtml" />
+    <Content Include="Views\OAuthGrant\GrantEdit.cshtml" />
+    <Content Include="Views\OAuthGrant\UserAdd.cshtml" />
+    <Content Include="Views\OAuthGrant\UserEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

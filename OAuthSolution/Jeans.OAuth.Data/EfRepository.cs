@@ -36,5 +36,41 @@ namespace Jeans.OAuth.Data
             }
         }
 
+        public TEntity GetById(object id)
+        {
+            return Entities.Find(id);
+        }
+
+        public void Delete(TEntity entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
+            Entities.Remove(entity);
+            _context.SaveChangesAsync();
+        }
+
+        public void Insert(TEntity entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
+            Entities.Add(entity);
+            _context.SaveChangesAsync();
+        }
+
+        public void Update(TEntity entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
+            _context.SaveChangesAsync();
+        }
     }
 }

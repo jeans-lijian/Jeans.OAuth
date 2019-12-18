@@ -38,5 +38,40 @@ namespace Jeans.OAuth.Server
             }
         }
 
+        public bool DeleteUser(Guid id)
+        {
+            UserEntity entity = _userRepository.GetById(id);
+            if (entity != null)
+            {
+                _userRepository.Delete(entity);
+                return true;
+            }
+
+            return false;
+        }
+
+        public void AddUser(UserEntity entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
+            _userRepository.Insert(entity);
+        }
+
+        public void UpdateUser(UserEntity entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
+            UserEntity userEntity = _userRepository.GetById(entity.Id);
+            if (userEntity != null)
+            {
+                _userRepository.Update(userEntity);
+            }
+        }
     }
 }

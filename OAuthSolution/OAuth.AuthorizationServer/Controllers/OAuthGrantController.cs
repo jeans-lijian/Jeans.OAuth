@@ -68,10 +68,11 @@ namespace OAuth.AuthorizationServer.Controllers
             return View();
         }
 
-        public ActionResult UserDelete()
+        public ActionResult UserDelete(Guid id)
         {
-            return View("UserList");
-        } 
+            _userService.DeleteUser(id);
+            return RedirectToAction("UserList");
+        }
 
         #endregion
 
