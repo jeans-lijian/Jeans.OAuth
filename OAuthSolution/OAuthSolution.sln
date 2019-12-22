@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeans.OAuth", "Jeans.OAuth\Jeans.OAuth.csproj", "{A81D50B5-4290-4A92-A55D-F96C863E5EAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jeans.OAuth.Test", "Jeans.OAuth\Jeans.OAuth.Test.csproj", "{A81D50B5-4290-4A92-A55D-F96C863E5EAE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth.AuthorizationServer", "OAuth.AuthorizationServer\OAuth.AuthorizationServer.csproj", "{EB97E576-A498-4154-9CD6-F41F0B582EBA}"
 EndProject

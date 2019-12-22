@@ -3,6 +3,7 @@ using Autofac.Integration.WebApi;
 using Jeans.OAuth.Server;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using OAuth.AuthorizationServer.Providers;
 using Owin;
@@ -17,6 +18,13 @@ namespace OAuth.AuthorizationServer
     {
         public static void Configure(IAppBuilder app)
         {
+            app.UseCookieAuthentication(new CookieAuthenticationOptions {
+                AuthenticationType= "Application",
+                AuthenticationMode= AuthenticationMode.Passive,
+                LoginPath=new PathString("/Account/Login"),
+                LogoutPath=new PathString("/Account/LoginOut")
+            });
+
             var oauthOptions = new OAuthAuthorizationServerOptions
             {
                 AllowInsecureHttp = true,
