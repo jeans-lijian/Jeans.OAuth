@@ -1,7 +1,18 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+@section scripts{
+    <script>
+        $(function () {
+            var index = window.location.hash.indexOf('#');
+            var content = window.location.hash.substr(index + 1);
+            var splitContents = content.split('&')
+            var data = {};
+            data.access_token = splitContents[0].split('=')[1];
+            data.token_type = splitContents[1].split('=')[1]
+            window.opener.oauth.about(data);
+            window.close();
+        });
+    </script>
+}

@@ -29,3 +29,23 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+<input type="button" value="ImplicitGrant" id="ImplicitGrant" />
+<textarea id="ImplicitGrant_Token"></textarea>
+
+@section scripts {
+    <script>
+        $(function () {
+            var baseAdderss = 'http://localhost:50000';
+            $('#ImplicitGrant').click(function () {
+                window.oauth = {};
+                window.oauth.about = function (data) {
+                    //console.log(data.access_token);
+                    $("#ImplicitGrant_Token").val(data.access_token);
+                };
+
+                var url = baseAdderss + "/authorize?response_type=token&client_id=s6BhdRkqt3&redirect_uri=http://localhost:56474/Home/About"
+                window.open(url, '', 'width=500,height=400')
+            });
+        });
+    </script>
+}

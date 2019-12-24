@@ -1,11 +1,13 @@
 ﻿using Jeans.OAuth.Core.Domains;
 using Jeans.OAuth.Server;
 using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.Infrastructure;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -141,20 +143,51 @@ namespace OAuth.AuthorizationServer.Providers
             return Task.FromResult(0);
         }
 
-        public override Task AuthorizeEndpoint(OAuthAuthorizeEndpointContext context)
+        public override async Task AuthorizeEndpoint(OAuthAuthorizeEndpointContext context)
         {
+            var authentication = context.OwinContext.Authentication;
+            var ticket = authentication.AuthenticateAsync("Application").Result;
+            ClaimsIdentity identity = ticket != null ? ticket.Identity : null;
+            if (identity == null)
+            {
+                authentication.Challenge("Application");
+                //return Task.FromResult(0);
+            }
+
             if (context.AuthorizeRequest.IsImplicitGrantType)
             {
-                var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-                context.OwinContext.Authentication.SignIn(identity);
+                var identity1 = new ClaimsIdentity(context.Options.AuthenticationType);
+                context.OwinContext.Authentication.SignIn(identity1);
                 context.RequestCompleted();
             }
             else if (context.AuthorizeRequest.IsAuthorizationCodeGrantType)
             {
+                var redirectUri = context.Request.Query["redirect_uri"];
+                var clientId = context.Request.Query["client_id"];
+                var identity3 = new ClaimsIdentity(new GenericIdentity(
+                    clientId, OAuthDefaults.AuthenticationType));
 
+                var authorizeCodeContext = new AuthenticationTokenCreateContext(
+                    context.OwinContext,
+                    context.Options.AuthorizationCodeFormat,
+                    new AuthenticationTicket(
+                        identity,
+                        new AuthenticationProperties(new Dictionary<string, string>
+                        {
+                        {"client_id", clientId},
+                        {"redirect_uri", redirectUri}
+                        })
+                        {
+                            IssuedUtc = DateTimeOffset.UtcNow,
+                            ExpiresUtc = DateTimeOffset.UtcNow.Add(context.Options.AuthorizationCodeExpireTimeSpan)
+                        }));
+
+                await context.Options.AuthorizationCodeProvider.CreateAsync(authorizeCodeContext);
+                context.Response.Redirect(redirectUri + "?code=" + "Uri.EscapeDataString(authorizeCodeContext.Token)");
+                context.RequestCompleted();
             }
 
-            return Task.FromResult<object>(null);
+            //return Task.FromResult<object>(null);
         }
 
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
