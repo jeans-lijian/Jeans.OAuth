@@ -18,11 +18,12 @@ namespace OAuth.AuthorizationServer
     {
         public static void Configure(IAppBuilder app)
         {
-            app.UseCookieAuthentication(new CookieAuthenticationOptions {
-                AuthenticationType= "Application",
-                AuthenticationMode= AuthenticationMode.Passive,
-                LoginPath=new PathString("/Account/Login"),
-                LogoutPath=new PathString("/Account/LoginOut")
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = "Application",
+                AuthenticationMode = AuthenticationMode.Passive,
+                LoginPath = new PathString("/Account/Login"),
+                LogoutPath = new PathString("/Account/LoginOut")
             });
 
             var oauthOptions = new OAuthAuthorizationServerOptions
@@ -33,9 +34,9 @@ namespace OAuth.AuthorizationServer
                 TokenEndpointPath = new PathString("/token"),
                 AuthorizeEndpointPath = new PathString("/authorize"),
                 Provider = GlobalConfiguration.Configuration.DependencyResolver.GetRootLifetimeScope().Resolve<CustomOAuthAuthorizationServerProvider>(),
-                AuthorizationCodeProvider = null,
-                RefreshTokenProvider = null,
-                AccessTokenProvider= new CustomAccessTokenProvider()
+                //AuthorizationCodeProvider = null,
+                RefreshTokenProvider = new CustomRefreshTokenProvider(),
+                AccessTokenProvider = new CustomAccessTokenProvider()
             };
 
             app.UseOAuthAuthorizationServer(oauthOptions);

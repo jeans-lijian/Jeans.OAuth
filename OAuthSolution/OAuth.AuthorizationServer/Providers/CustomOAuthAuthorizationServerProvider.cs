@@ -72,9 +72,10 @@ namespace OAuth.AuthorizationServer.Providers
 
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-            identity.AddClaim(new Claim(ClaimTypes.Role, "Iphone_Read Iphone_Write"));
+            identity.AddClaim(new Claim(ClaimTypes.Role, "Iphone_Read"));
+            identity.AddClaim(new Claim(ClaimTypes.Role, "Admin"));
 
-            string role = "Iphone_Read Iphone_Write";
+            string role = "Iphone_Read Admin";
             var props = new AuthenticationProperties(new Dictionary<string, string>
             {
                 {
