@@ -1,2 +1,2 @@
-# My_Jeans.OAuth
+# Jeans.OAuth
 asp.net webapi
